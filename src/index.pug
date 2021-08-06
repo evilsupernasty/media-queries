@@ -1,0 +1,32 @@
+main.sup-sections
+  section#sup-1.sup
+    h1 What is a media query?
+    .sub-sections
+      section#sub-1-1.sub
+        video(
+          src="https://assets.codepen.io/2775672/what-are-birds-opt.mp4",
+          autoplay,
+          loop
+        )
+      section#sub-1-2.sub
+        h2 A media query is an at-rule, but what is an at-rule?
+        .content
+          p At-rules are CSS statements, not related to styling elements, that tell CSS what to do.
+          p You may be familiar with #[code @import], #[code @font-face] and #[code @keyframes], but there are #[a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule") quite a few more] that you've probably never encountered before.
+          pre
+            code.
+              @import "./components/button.css";
+
+              font-face {
+                font-family: "Open Sans";
+                src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+                    url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+              }
+      section#sub-1-2.sub
+        h2 What does a media query do?
+      section#sub-1-3.sub
+        h2 Anatomy of a media query
+  section#sup-2.sup
+    h1 Media types
+  section#sup-3.sup
+    h1 Media features

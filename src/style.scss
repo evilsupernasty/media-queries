@@ -1,0 +1,188 @@
+// functions & mixins
+@function rem-calc($px) {
+  @return #{$px / 16}rem;
+}
+
+// variables
+$sm: 768px;
+$md: 1024px;
+$lg: 1280px;
+
+// helpers
+.no-scrollbar {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+}
+.inset, .outset {
+  position: relative;
+
+  &::before, &::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    transform-origin: top left;
+  }
+
+  &::before {
+    height: rem-calc(8);
+    width: 100%;
+  }
+}
+
+.inset {
+  overflow: hidden;
+
+  &::before {
+    background-color: #001;
+    height: rem-calc(8);
+    left: 0;
+    top: 0;
+    transform: skewX(45deg);
+    width: 100%;
+  }
+
+  &::after {
+    background-color: #005;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: skewY(45deg);
+    width: rem-calc(8);
+  }
+}
+
+.outset {
+  &::before {
+    background-color: #001;
+    bottom: rem-calc(-8);
+    height: rem-calc(8);
+    left: 0;
+    transform: skewX(45deg);
+    width: 100%;
+  }
+
+  &::after {
+    background-color: #005;
+    height: 100%;
+    right: rem-calc(-8);
+    top: 0;
+    transform: skewY(45deg);
+    width: rem-calc(8);
+  }
+}
+
+html,
+body {
+}
+
+html {
+  font-size: 16px;
+
+  @media screen and (min-width: $lg) {
+    font-size: 18px;
+  }
+}
+
+body {
+  background-color: #002;
+  color: #eff;
+  font-size: rem-calc(16);
+}
+
+a:link {
+  color: #aad;
+  text-decoration: 1px underline dotted;
+  text-underline-offset: 1px;
+  transition: all 250ms ease-in-out;
+}
+
+a:visited {
+  color: #bad;
+}
+
+a:hover,
+a:focus {
+  color: #dad;
+  text-underline-offset: 5px;
+}
+
+a:active {
+  color: #daa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  background-color: #004;
+  display: inline-block;
+  font-weight: normal;
+  margin: 0.5em 0 0.5em 1rem;
+  padding: 1rem;
+
+  @extend .outset;
+}
+
+h1 {
+  font-size: rem-calc(36);
+}
+
+img,
+video {
+  height: auto;
+  max-width: 90vmin;
+  width: 100%;
+}
+
+.sup-sections {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+
+  @extend .no-scrollbar;
+}
+
+.sup {
+  flex: 1 0 100vh;
+  scroll-snap-align: center;
+  width: 100vw;
+}
+
+.sub-sections {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+
+  @extend .no-scrollbar;
+}
+
+.sub {
+  width: 100vw;
+  flex: 1 0 100vw;
+  scroll-snap-align: center;
+}
+
+.content {
+  background-color: #004;
+  margin: rem-calc(16);
+  padding: rem-calc(16);
+  @extend .inset;
+}
+
+#sub-1-1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
